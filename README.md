@@ -1,4 +1,4 @@
-<title>FinWhiz</title>
+
 <h1>Overview</h1>
 Finwhiz is a financial analysis web application designed to help users evaluate their financial health through various tools, including stock market analysis, mutual fund performance tracking, and personalized financial planning. The application provides users with insightful visualizations and actionable recommendations.
 

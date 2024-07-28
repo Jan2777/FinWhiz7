@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Allocation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            background: url('your-background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        h1{
+            font-size: 50px;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        #mainContent {
+            margin-top: 80px; /* Adjust margin to avoid overlap with fixed header */
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh; /* Adjust height as needed */
+            margin-top: 20px;
+        }
+
+        .image-container {
+            top:40%;
+            margin-bottom:1%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .image-container img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 15px; /* Curved edges for the image */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-container {
+            flex: 1;
+            top:50%;
+            left: 4px;
+            padding: 30px;
+            margin-left: 20px;
+        }
+
+        .text-container h1 {
+    
+            margin-top: 400px; ;
+            font-size: 4em; /* Larger font size for the first line */
+            
+        }
+
+        .text-container p {
+            top:78%;
+            left:60%;
+            
+            font-size: 1em; /* Smaller font size for subsequent lines */
+            margin-top: 10px;
+        }
+
+        .text-container2 {
+            flex: 1;
+            margin-top: 220px;
+            width:40%;
+            left: 2px;
+            padding: 15px;
+            margin-left: 65px;
+            
+        }
+
+        .text-container2 h1 {
+            top:177%;
+            margin-top: 300px; ;
+            font-size: 4em; /* Larger font size for the first line */
+            
+        }
+
+        .text-container2 p {
+            top:78%;
+            left:50%;
+            
+            font-size: 1em; /* Smaller font size for subsequent lines */
+            margin-top: 10px;
+        }
+        #allocationContainer{
+            margin-top: -50px;
+        }
+
+        #investmentForm {
+    position: relative;
+    width:30%;
+    left: 50%;
+    margin-top: -480px;
+            margin-left: 3px;
+     
+    padding: 90px;
+    background: rgba(255, 255, 255, 0.8); 
+            
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-out;
+    margin-bottom: 200px;
+}
+
+
+        #investmentForm h2 {
+            left:60%;
+            margin-top: 0;
+        }
+
+        /* Input styling */
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+
+        }
+
+        form select, form input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        #schemesContainer {
+            margin-left:730px;
+            display: flex;
+            flex-direction: column;
+            width:200px;
+        
+            margin-top: -300px;
+            
+        }
+        h4{
+            display: block;
+        }
+        .scheme-card {
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            opacity: 0.7;
+            transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s;
+            position: relative;
+            
+        }
+        .schemecat{
+            display: flex;
+            flex-direction: column;
+        }
+        .schemech{
+            display: flex;
+            flex-wrap: wrap;
+            gap:10px;
+        }
+        .scheme-card:hover {
+            transform: scale(1.05);
+            opacity: 1;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .schemeChart {
+            max-width: 300px;
+            width: 100%;
+        }
+
+        #backBtn {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #backBtn:hover {
+            background-color: #0056b3;
+        }
+        .tabs {
+            display: flex;
+            background-color: #2E363A;
+            font-family: "Lato", sans-serif;
+            height:130px;
+        }
+
+        .tab-button {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #2E363A;
+            position: relative;
+            padding-bottom: 25px;
+        
+            border: none;
+            outline: none;
+            color:#E5E5E5;
+            text-decoration: none;
+
+        }
+
+        .tab-button:hover,
+        .tab-button.active {
+            color: #2ca5eb;
+        }
+
+
+        .tab-button.active::after,
+        .tab-button:hover::after {
+            transform: scaleX(1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .lab {
+            display: inline;
+            padding-top: 10px;
+            margin-left: 20px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            column-gap: 5px;
+            margin-left: auto;
+            margin-right: 15px;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .homepg {
+            display: flex;
+            margin-top: 30px;
+            column-gap: 80px;
+            height: 100%;
+        }
+
+        .slogan {
+            margin-left: 170px;
+            padding-top: 100px;
+        }
+
+        .mantra {
+            font-family: "Times New Roman", serif;
+            font-weight: 700;
+            font-size: 45px;
+        }
+
+        body {
+            margin: 0;
+        
+        }
+
+        
+
+    
+        .sub{
+            display:flex;
+            flex-direction: column;
+            float: right;
+            
+            margin-left:500px;
+            row-gap: 40px;
+        }
+        .cont,.cont1{
+            display:inline;
+            color:#AAAAAA;
+            font-size: 13px;
+        
+        }
+        .cont{
+            margin-left: 120px;
+        }
+        .cont1{
+            margin-left: 50px;
+        }
+        .conta{
+            margin-top: 17px;
+        }
+        .logo{
+            vertical-align: middle;
+        }
+        span{
+            vertical-align: middle;
+            font-family: "Kanit", sans-serif;
+            font-weight: bold;
+            
+        }
+        .comp{
+            display: flex;
+            padding-left: 50px;
+            padding-top: 40px;
+            color:#E5E5E5;
+            font-size:35px;
+        }
+        .slider-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    
+    
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    display: flex;
+    z-index: 100;
+}
+
+
+.textcont{
+    margin-left:-1200px;
+    margin-top:240px;
+    width:517.9px;
+}
+    </style>
+    <script src="app.js" defer></script>
+</head>
+<body>
+
+    <div class="tabs" id="navbar">
+        <div class="comp">
+            <a href="index.html"><img class="logo" src="log.png" height="50px">
+            </a><span>FinWhiz</span>
+        </div>
+        <div class="sub">
+            <div class="conta">
+        <div class="cont">finwhiz2024@gmail.com</div>
+        <div class="cont1">044-2227489</div></div>
+        <div class="menu">
+            <a class="tab-button" href="index.html">Home</a>
+            <a class="tab-button" href="checkup.html">Financial Checkup</a>
+            <a class="tab-button" href="planning.html">Planning</a>
+            <a class="tab-button" href="investment.html">Investment</a>
+        </div>
+        </div>
+    </div>
+    <div id="mainContent">
+        <div class="container">
+            <div class="image-container">
+                <img src="image.png" alt="Investment Image">
+            </div>
+            <div class="text-container">
+                <h1 size>Investment Allocation Made Simple</h1>
+                <p>Get personalized investment recommendations tailored to your income, risk tolerance, and financial goals.</p>
+                <p>Optimize your portfolio and make informed decisions to achieve your financial aspirations.</p>
+                <p>Explore investment opportunities that align with your objectives and risk profile.</p>
+            </div>
+        </div>
+        <div class="text-container2">
+            <h2>Why FinWhiz for Investing?</h2>
+            <div class="text-container2-points">
+                <div class="point">
+                    <h3>Expert Advice</h3>
+                    <p>We provide expert investment advice tailored to your unique financial situation.</p>
+                </div>
+                <div class="point">
+                    <h3>Optimized Portfolio</h3>
+                    <p>Our tools help you optimize your portfolio to maximize returns.</p>
+                </div>
+                <div class="point">
+                    <h3>Comprehensive Support</h3>
+                    <p>We offer comprehensive support and insights to help you make informed decisions.</p>
+                </div>
+                <div class="point">
+                    <h3>Custom Solutions</h3>
+                    <p>We offer investment solutions that align with your financial goals and risk tolerance.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="investmentForm">
+            <h2>Investment Form</h2>
+            <form id="formm">
+                <label for="income">Income:</label>
+                <select id="income" name="income">
+                    <option value="Low to moderate">Low to moderate</option>
+                    <option value="Moderate to high">Moderate to high</option>
+                    <option value="High">High</option>
+                </select>
+
+                <label for="riskTolerance">Risk Tolerance:</label>
+                <select id="riskTolerance" name="riskTolerance">
+                    <option value="Low">Low</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="High">High</option>
+                </select>
+
+                <label for="investmentHorizon">Investment Horizon:</label>
+                <select id="investmentHorizon" name="investmentHorizon">
+                    <option value="Short to medium-term">Short to medium-term</option>
+                    <option value="Medium to long-term">Medium to long-term</option>
+                    <option value="Long-term">Long-term</option>
+                </select>
+
+                <label for="investmentStyle">Investment Style:</label>
+                <select id="investmentStyle" name="investmentStyle">
+                    <option value="Passive">Passive</option>
+                    <option value="Active">Active</option>
+                    <option value="Passive or active">Passive or active</option>
+                </select>
+    
+                <button type="button" id="submitBtn" onclick="func()">Submit</button>
+            </form>
+        </div>
+        
+        <div id="allocationContainer" class="hidden" style="position: relative; height: 300px; width: 300px">
+            <h2>Allocation Pie Chart</h2>
+            <canvas id="allocationChart" width="30vh" height="40ww"></canvas>
+
+            <button type="button" id="backBtn" class="hidden">Back</button>
+        </div>
+                    
+        <div id="matchingFunds" style="display:none"></div>
+        <div id="schemesContainer"></div>
+        <div id="results"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('backBtn').addEventListener('click', handleBack);
+        });
+
+        function handleBack() {
+            document.getElementById('investmentForm').style.display = 'block';
+            document.getElementById('allocationContainer').getContext("2d").style.display = 'none';
+        }
+        console.log(10)
+        function func(){
+            const form = document.getElementById('submitBtn');
+    const resultsDiv = document.getElementById('results');
+    console.log(form)
+        
+            const tempincome = document.getElementById('income').value;
+            var income=0;
+            if(tempincome==='Low to moderate'){
+                income=20000;
+            }
+            else if(tempincome==='Moderate to high'){
+                income=100000;
+            }
+            else if(tempincome==='High'){
+                income=500000;
+            }
+            console.log(income)
+            resultsDiv.innerHTML = '';
+            fetch('/run-script', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ salary: income })
+            })
+            .then(response => response.json())
+            .then(data => {
+                 // Clear previous results
+    
+                if (data.top_5_stocks && data.top_5_stocks.length > 0) {
+                    // Print details for the first 4 stocks
+                    data.top_5_stocks.slice(0, 4).forEach(stock => {
+                        const stockDiv = document.createElement('div');
+                        stockDiv.className = 'stock-details';
+                        stockDiv.innerHTML = `
+                            <h2>${stock.symbol}</h2>
+                            <p>Combined Score: ${stock.combined_score}</p>
+                            <p>Mean Close Price: ${stock.mean_close_price}</p>
+                            <p>Mean Volume: ${stock.mean_volume}</p>
+                            <canvas id="chart-${stock.symbol}" class="stock-chart"></canvas>
+                        `;
+                        resultsDiv.appendChild(stockDiv);
+    
+                        // Create chart for stock
+                        const forecastedPrices = stock.forecasted_prices;
+                        if (forecastedPrices) {
+                            const ctx = document.getElementById(`chart-${stock.symbol}`).getContext('2d');
+                            new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: Array.from({ length: forecastedPrices.length }, (_, i) => `Day ${i + 1}`),
+                                    datasets: [{
+                                        label: 'Forecasted Prices',
+                                        data: forecastedPrices,
+                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                        borderWidth: 2,
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        x: {
+                                            beginAtZero: true
+                                        },
+                                        y: {
+                                            beginAtZero: false
+                                        }
+                                    }
+                                }
+                            });
+                        } else {
+                            console.warn(`No forecasted data available for stock symbol: ${stock.symbol}`);
+                        }
+                    });
+    
+                    // Print details for the fifth stock
+                    const fifthStock = data.top_5_stocks[4];
+                    if (fifthStock) {
+                        const fifthStockDiv = document.createElement('div');
+                        fifthStockDiv.className = 'stock-details';
+                        fifthStockDiv.innerHTML = `
+                            <h2>${fifthStock.symbol}</h2>
+                            <p>Combined Score: ${fifthStock.combined_score}</p>
+                            <p>Mean Close Price: ${fifthStock.mean_close_price}</p>
+                            <p>Mean Volume: ${fifthStock.mean_volume}</p>
+                            <canvas id="chart-${fifthStock.symbol}" class="stock-chart"></canvas>
+                        `;
+                        resultsDiv.appendChild(fifthStockDiv);
+    
+                        // Create chart for fifth stock
+                        const forecastedPrices = fifthStock.forecasted_prices;
+                        if (forecastedPrices) {
+                            const ctx = document.getElementById(`chart-${fifthStock.symbol}`).getContext('2d');
+                            new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: Array.from({ length: forecastedPrices.length }, (_, i) => `Day ${i + 1}`),
+                                    datasets: [{
+                                        label: 'Forecasted Prices',
+                                        data: forecastedPrices,
+                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                        borderWidth: 2,
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        x: {
+                                            beginAtZero: true
+                                        },
+                                        y: {
+                                            beginAtZero: false
+                                        }
+                                    }
+                                }
+                            });
+                        } else {
+                            console.warn(`No forecasted data available for stock symbol: ${fifthStock.symbol}`);
+                        }
+                    }
+                } else {
+                    resultsDiv.innerHTML = '<p>No stock data available.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                resultsDiv.innerHTML = '<p>Error fetching data.</p>';
+            });
+        };
+
+
+        
+function handleSubmit() {
+    const income = document.getElementById('income').value;
+    console.log(income)
+    const riskTolerance = document.getElementById('riskTolerance').value;
+    const investmentHorizon = document.getElementById('investmentHorizon').value;
+    const investmentStyle = document.getElementById('investmentStyle').value;
+
+    // Determine the investment model based on inputs
+    const model = determineInvestmentModel(income, riskTolerance, investmentHorizon, investmentStyle);
+
+    // Get allocation based on the model
+    const allocation = getAllocation(model);
+
+    // Plot the pie chart
+    plotPieChart(allocation);
+
+    // Check for specified fund types
+    const fundTypes = [
+        'Banking and PSU Fund',
+        'Liquid Fund',
+        'Medium Duration Fund',
+        'Balanced Hybrid Fund',
+        'Dynamic Bond Fund',
+        'Dividend Yield Fund',
+        'Gilt Fund with 10 year constant duration',
+        'Floater Fund',
+        'Corporate Bond Fund',
+        'Credit Risk Fund',
+        'ELSS',
+        'Tax Savings Fund'
+    ];
+
+    const matchingFunds = Object.keys(allocation).filter(fund => fundTypes.includes(fund));
+
+    // Display matching funds and their schemes
+    displayMatchingFunds(matchingFunds);
+    console.log(10)
+    // Hide the form and show the pie chart container
+    document.getElementById('investmentForm').classList.add('hidden');
+    document.getElementById('allocationContainer').classList.remove('hidden');
+    document.getElementById('backBtn').classList.remove('hidden');
+    console.log(10)
+}
+function handleBack() {
+    // Show the form and hide the pie chart container
+    document.getElementById('investmentForm').classList.remove('hidden');
+    document.getElementById('allocationContainer').classList.add('hidden');
+    document.getElementById('backBtn').classList.add('hidden');
+
+    // Reset form fields
+    document.getElementById('investmentForm').reset();
+
+    // Clear previous chart
+    const ctx = document.getElementById('allocationChart').getContext('2d');
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Clear the chart area
+
+    // Clear matching funds and schemes
+    document.getElementById('matchingFunds').innerHTML = '';
+    document.getElementById('schemesContainer').innerHTML = '';
+}
+
+function determineInvestmentModel(income, riskTolerance, investmentHorizon, investmentStyle) {
+    // Complete allocation table
+    const models = {
+        'Conservative Investor': {
+            income: 'Low to moderate',
+            riskTolerance: 'Low',
+            investmentHorizon: 'Short to medium-term',
+            investmentStyle: 'Passive',
+            allocation: {
+                'FDs': 70,
+                'Banking and PSU Fund': 15,
+                'Liquid Fund': 5,
+                'PPF': 10
+            }
+        },
+        'Balanced Investor': {
+            income: 'Moderate to high',
+            riskTolerance: 'Moderate',
+            investmentHorizon: 'Medium to long-term',
+            investmentStyle: 'Passive or active',
+            allocation: {
+                'FDs': 20,
+                'Corporate Bond Fund': 15,
+                'Medium Duration Fund': 15,
+                'Equity funds': 30,
+                'Balanced Hybrid Fund': 20
+            }
+        },
+        'Aggressive Investor': {
+            income: 'High',
+            riskTolerance: 'High',
+            investmentHorizon: 'Long-term',
+            investmentStyle: 'Active',
+            allocation: {
+                'Equity funds': 60,
+                'Credit Risk Fund': 10,
+                'Dynamic Bond Fund': 10,
+                'Alternative investments': 15,
+                'Cash': 5
+            }
+        },
+        'Income-Focused Investor': {
+            income: 'High',
+            riskTolerance: 'Moderate',
+            investmentHorizon: 'Medium to long-term',
+            investmentStyle: 'Passive',
+            allocation: {
+                'Dividend Yield Fund': 50,
+                'Gilt Fund with 10 year constant duration': 20,
+                'Floater Fund': 10,
+                'FDs': 20
+            }
+        },
+        'Tax-Saving Investor': {
+            income: 'High',
+            riskTolerance: 'Moderate',
+            investmentHorizon: 'Long-term',
+            investmentStyle: 'Passive',
+            allocation: {
+                'ELSS': 60,
+                'PPF': 30,
+                'Tax Savings Fund': 10
+            }
+        }
+    };
+
+    for (const [model, criteria] of Object.entries(models)) {
+        if (
+            criteria.income === income &&
+            criteria.riskTolerance === riskTolerance &&
+            criteria.investmentHorizon === investmentHorizon &&
+            criteria.investmentStyle === investmentStyle
+        ) {
+            return criteria.allocation;
+        }
+    }
+
+    return {};
+}
+
+function getAllocation(model) {
+    return model;
+}
+
+function plotPieChart(allocation) {
+    const ctx = document.getElementById('allocationChart').getContext('2d');
+    const labels = Object.keys(allocation);
+    const data = Object.values(allocation);
+
+    // Destroy previous chart instance if it exists
+    if (window.pieChart) {
+        window.pieChart.destroy();
+    }
+
+    window.pieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: data,
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return `${tooltipItem.label}: ${tooltipItem.raw}%`;
+                        }
+                    }
+                }
+            },
+            layout: {
+                padding: {
+                    top: 10,
+                    bottom: 10,
+                    left: 10,
+                    right: 10
+                }
+            },
+            animation: {
+                animateRotate: true,
+                animateScale: true
+            }
+        }
+    });
+}
+
+function displayMatchingFunds(matchingFunds) {
+    const matchingFundsContainer = document.getElementById('matchingFunds');
+    const schemesContainer = document.getElementById('schemesContainer');
+    matchingFundsContainer.innerHTML = '';
+    schemesContainer.innerHTML = '';
+
+    if (matchingFunds.length > 0) {
+        matchingFundsContainer.innerHTML = '<h3>Matching Funds:</h3>';
+        matchingFunds.forEach(fund => {
+            const div = document.createElement('div');
+            div.className = 'fund-card';
+            div.textContent = fund;
+            matchingFundsContainer.appendChild(div);
+           
+            // Fetch and display schemes for this fund
+            fetchSchemesForFund(fund);
+        });
+    } else {
+        matchingFundsContainer.innerHTML = '<h3>No matching funds found.</h3>';
+    }
+}
+
+function fetchSchemesForFund(fund) {
+    fetch('schemes.json')
+        .then(response => response.json())
+        .then(data => {
+            const schemes = data['schemes'][fund];
+            console.log('Schemes:', schemes);
+            if (schemes && schemes.length > 0) {
+                const schemesContainer = document.getElementById('schemesContainer');
+                const catdiv=document.createElement('div');
+                catdiv.className='schemecat';
+                const header = document.createElement('h4');
+                header.innerHTML+='<br>'
+                header.textContent += `Schemes under ${fund}:`;
+                schemesContainer.appendChild(header);
+
+                const charsdiv=document.createElement('div');
+                charsdiv.className='schemech';
+                catdiv.appendChild(charsdiv);
+                schemes.forEach((scheme, index) => {
+                    const schemeDiv = document.createElement('div');
+                    schemeDiv.className = 'scheme-card';
+                    schemeDiv.innerHTML = `<strong>${scheme.schemeName}</strong>`;
+                    const canvas = document.createElement('canvas');
+                    canvas.className = 'schemeChart';
+                    canvas.id = `schemeChart-${fund}-${index}`; // Assign a unique ID for debugging
+                    schemeDiv.appendChild(canvas);
+
+                    charsdiv.appendChild(schemeDiv);
+
+                    // Log the schemeDiv and canvas for debugging
+                    console.log('SchemeDiv:', schemeDiv);
+                    console.log('Canvas:', canvas);
+
+                    // Plot NAV graph for this scheme
+                    plotSchemeChart(canvas, scheme.navData);
+                });
+                schemesContainer.appendChild(catdiv)
+            }
+        })
+        .catch(error => console.error('Error fetching schemes:', error));
+}
+function plotSchemeChart(canvas, navData) {
+    const ctx = canvas.getContext('2d');
+    const reversedNavData = navData.slice().reverse();
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: reversedNavData.map((_, index) => `Day ${index + 1}`),
+            datasets: [{
+                label: 'NAV',
+                data: reversedNavData,
+                borderColor: '#FF6384',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                fill: true
+            }]
+        }
+        ,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return `NAV: ${tooltipItem.raw}`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+   
+}document.addEventListener('DOMContentLoaded', () => {
+    // Attach event listeners to buttons
+    document.getElementById('submitBtn').addEventListener('click', handleSubmit);
+    document.getElementById('backBtn').addEventListener('click', handleBack);
+});
+
+function handleSubmit() {
+    const income = document.getElementById('income').value;
+    const riskTolerance = document.getElementById('riskTolerance').value;
+    const investmentHorizon = document.getElementById('investmentHorizon').value;
+    const investmentStyle = document.getElementById('investmentStyle').value;
+
+    // Determine the investment model based on inputs
+    const model = determineInvestmentModel(income, riskTolerance, investmentHorizon, investmentStyle);
+
+    // Get allocation based on the model
+    const allocation = getAllocation(model);
+
+    // Plot the pie chart
+    plotPieChart(allocation);
+
+    // Check for specified fund types
+    const fundTypes = [
+        'Banking and PSU Fund',
+        'Liquid Fund',
+        'Medium Duration Fund',
+        'Balanced Hybrid Fund',
+        'Dynamic Bond Fund',
+        'Dividend Yield Fund',
+        'Gilt Fund with 10 year constant duration',
+        'Floater Fund',
+        'Corporate Bond Fund',
+        'Credit Risk Fund',
+        'ELSS',
+        'Tax Savings Fund'
+    ];
+
+    const matchingFunds = Object.keys(allocation).filter(fund => fundTypes.includes(fund));
+
+    // Display matching funds and their schemes
+    displayMatchingFunds(matchingFunds);
+
+    // Hide the form and show the pie chart container
+    document.getElementById('investmentForm').classList.add('hidden');
+    document.getElementById('allocationContainer').classList.remove('hidden');
+    document.getElementById('backBtn').classList.remove('hidden');
+}
+
+function handleBack() {
+    // Show the form and hide the pie chart container
+    document.getElementById('investmentForm').classList.remove('hidden');
+    document.getElementById('allocationContainer').classList.add('hidden');
+    document.getElementById('backBtn').classList.add('hidden');
+
+    // Reset form fields
+    document.getElementById('investmentForm').reset();
+
+    // Clear previous chart
+    const ctx = document.getElementById('allocationChart').getContext('2d');
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height); // Clear the chart area
+
+    // Clear matching funds and schemes
+    document.getElementById('matchingFunds').innerHTML = '';
+    document.getElementById('schemesContainer').innerHTML = '';
+}
+
+function determineInvestmentModel(income, riskTolerance, investmentHorizon, investmentStyle) {
+    // Complete allocation table
+    const models = {
+        'Conservative Investor': {
+            income: 'Low to moderate',
+            riskTolerance: 'Low',
+            investmentHorizon: 'Short to medium-term',
+            investmentStyle: 'Passive',
+            allocation: {
+                'FDs': 70,
+                'Banking and PSU Fund': 15,
+                'Liquid Fund': 5,
+                'PPF': 10
+            }
+        },
+        'Balanced Investor': {
+            income: 'Moderate to high',
+            riskTolerance: 'Moderate',
+            investmentHorizon: 'Medium to long-term',
+            investmentStyle: 'Passive or active',
+            allocation: {
+                'FDs': 20,
+                'Corporate Bond Fund': 15,
+                'Medium Duration Fund': 15,
+                'Equity funds': 30,
+                'Balanced Hybrid Fund': 20
+            }
+        },
+        'Aggressive Investor': {
+            income: 'High',
+            riskTolerance: 'High',
+            investmentHorizon: 'Long-term',
+            investmentStyle: 'Active',
+            allocation: {
+                'Equity funds': 60,
+                'Credit Risk Fund': 10,
+                'Dynamic Bond Fund': 10,
+                'Alternative investments': 15,
+                'Cash': 5
+            }
+        },
+        'Income-Focused Investor': {
+            income: 'High',
+            riskTolerance: 'Moderate',
+            investmentHorizon: 'Medium to long-term',
+            investmentStyle: 'Passive',
+            allocation: {
+                'Dividend Yield Fund': 50,
+                'Gilt Fund with 10 year constant duration': 20,
+                'Floater Fund': 10,
+                'FDs': 20
+            }
+        },
+        'Tax-Saving Investor': {
+            income: 'High',
+            riskTolerance: 'Moderate',
+            investmentHorizon: 'Long-term',
+            investmentStyle: 'Passive',
+            allocation: {
+                'ELSS': 60,
+                'PPF': 30,
+                'Tax Savings Fund': 10
+            }
+        }
+    };
+
+    for (const [model, criteria] of Object.entries(models)) {
+        if (
+            criteria.income === income &&
+            criteria.riskTolerance === riskTolerance &&
+            criteria.investmentHorizon === investmentHorizon &&
+            criteria.investmentStyle === investmentStyle
+        ) {
+            return criteria.allocation;
+        }
+    }
+
+    return {};
+}
+
+function getAllocation(model) {
+    return model;
+}
+
+function plotPieChart(allocation) {
+    const ctx = document.getElementById('allocationChart').getContext('2d');
+    const labels = Object.keys(allocation);
+    const data = Object.values(allocation);
+
+    // Destroy previous chart instance if it exists
+    if (window.pieChart) {
+        window.pieChart.destroy();
+    }
+
+    window.pieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: data,
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return `${tooltipItem.label}: ${tooltipItem.raw}%`;
+                        }
+                    }
+                }
+            },
+            layout: {
+                padding: {
+                    top: 10,
+                    bottom: 10,
+                    left: 10,
+                    right: 10
+                }
+            },
+            animation: {
+                animateRotate: true,
+                animateScale: true
+            }
+        }
+    });
+}
+
+function displayMatchingFunds(matchingFunds) {
+    const matchingFundsContainer = document.getElementById('matchingFunds');
+    const schemesContainer = document.getElementById('schemesContainer');
+    matchingFundsContainer.innerHTML = '';
+    schemesContainer.innerHTML = '';
+
+    if (matchingFunds.length > 0) {
+        matchingFundsContainer.innerHTML = '<h3>Matching Funds:</h3>';
+        matchingFunds.forEach(fund => {
+            const div = document.createElement('div');
+            div.className = 'fund-card';
+            div.textContent = fund;
+            matchingFundsContainer.appendChild(div);
+           
+            // Fetch and display schemes for this fund
+            fetchSchemesForFund(fund);
+        });
+    } else {
+        matchingFundsContainer.innerHTML = '<h3>No matching funds found.</h3>';
+    }
+}
+const dat={
+    "Date": "2024-07-26",
+    "schemes": {
+        "Banking and PSU Fund": [
+            {
+                "schemeName": "Bajaj Finserv Banking and PSU Fund-  Direct Plan-Monthly- IDCW",
+                "navData": [
+                    10.5999,
+                    10.5892,
+                    10.5841,
+                    10.5824,
+                    10.5769,
+                    10.5737,
+                    10.5686,
+                    10.5579,
+                    10.553,
+                    10.55
+                ]
+            },
+            {
+                "schemeName": "Bajaj Finserv Banking and PSU Fund- Direct Plan- IDCW",
+                "navData": [
+                    10.5999,
+                    10.5892,
+                    10.5841,
+                    10.5824,
+                    10.5769,
+                    10.5737,
+                    10.5686,
+                    10.5579,
+                    10.553,
+                    10.55
+                ]
+            },
+            {
+                "schemeName": "Bajaj Finserv Banking and PSU Fund- Regular Plan- Growth",
+                "navData": [
+                    10.5592,
+                    10.5487,
+                    10.5438,
+                    10.5422,
+                    10.5372,
+                    10.5342,
+                    10.5294,
+                    10.519,
+                    10.5145,
+                    10.5117
+                ]
+            },
+            {
+                "schemeName": "Bajaj Finserv Banking and PSU Fund- Regular Plan- IDCW",
+                "navData": [
+                    10.5592,
+                    10.5487,
+                    10.5438,
+                    10.5422,
+                    10.5372,
+                    10.5342,
+                    10.5294,
+                    10.519,
+                    10.5145,
+                    10.5117
+                ]
+            },
+            {
+                "schemeName": "Bajaj Finserv Banking and PSU Fund-Direct Plan- Growth",
+                "navData": [
+                    10.5999,
+                    10.5892,
+                    10.5841,
+                    10.5824,
+                    10.5769,
+                    10.5737,
+                    10.5686,
+                    10.5579,
+                    10.553,
+                    10.55
+                ]
+            }
+        ],
+        "Liquid Fund": [
+            {
+                "schemeName": "Aditya Birla Sun Life Liquid Fund - Growth",
+                "navData": [
+                    394.5405,
+                    394.4629,
+                    394.3877,
+                    394.3208,
+                    394.2482,
+                    394.1033,
+                    394.0299,
+                    393.9481,
+                    393.8753,
+                    393.8074
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Liquid Fund - Growth - Direct Plan",
+                "navData": [
+                    398.812,
+                    398.7322,
+                    398.6548,
+                    398.5859,
+                    398.5111,
+                    398.3619,
+                    398.2862,
+                    398.2022,
+                    398.1272,
+                    398.0572
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Liquid Fund -Daily IDCW",
+                "navData": [
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Liquid Fund -Direct - daily IDCW",
+                "navData": [
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195,
+                    100.195
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Liquid Fund -DIRECT - IDCW",
+                "navData": [
+                    201.3823,
+                    201.342,
+                    201.3029,
+                    201.2681,
+                    201.2303,
+                    201.155,
+                    201.1168,
+                    201.0743,
+                    201.0365,
+                    201.0011
+                ]
+            }
+        ],
+        "Medium Duration Fund": [
+            {
+                "schemeName": "BARODA BNP PARIBAS Medium Duration Fund - Direct Plan - Annual IDCW Option",
+                "navData": [
+                    10.9833,
+                    10.9751,
+                    10.9736,
+                    10.972,
+                    10.9655,
+                    10.9618,
+                    10.9545,
+                    10.9493,
+                    10.9408,
+                    10.9401
+                ]
+            },
+            {
+                "schemeName": "BARODA BNP PARIBAS Medium Duration Fund - Direct Plan - Calendar Quarterly IDCW Option",
+                "navData": [
+                    10.2757,
+                    10.268,
+                    10.2666,
+                    10.2651,
+                    10.259,
+                    10.2555,
+                    10.2487,
+                    10.2438,
+                    10.2359,
+                    10.2353
+                ]
+            },
+            {
+                "schemeName": "BARODA BNP PARIBAS Medium Duration Fund - Direct Plan - Growth Option",
+                "navData": [
+                    18.727,
+                    18.7128,
+                    18.7103,
+                    18.7076,
+                    18.6965,
+                    18.6902,
+                    18.6777,
+                    18.6689,
+                    18.6544,
+                    18.6533
+                ]
+            },
+            {
+                "schemeName": "BARODA BNP PARIBAS Medium Duration Fund - Direct Plan - Half yearly IDCW Option",
+                "navData": [
+                    10.0,
+                    10.0,
+                    10.0,
+                    10.0,
+                    10.0,
+                    10.0,
+                    10.0,
+                    10.0,
+                    10.0,
+                    10.0
+                ]
+            },
+            {
+                "schemeName": "BARODA BNP PARIBAS Medium Duration Fund - Direct Plan - Monthly IDCW Option",
+                "navData": [
+                    10.7023,
+                    10.6942,
+                    10.6928,
+                    10.6913,
+                    10.6849,
+                    10.6813,
+                    10.6742,
+                    10.6691,
+                    10.6608,
+                    10.6602
+                ]
+            }
+        ],
+        "Balanced Hybrid Fund": [
+            {
+                "schemeName": "360 ONE Balanced Hybrid Fund - Direct Plan - IDCW",
+                "navData": [
+                    12.3142,
+                    12.3087,
+                    12.275,
+                    12.3036,
+                    12.2341,
+                    12.3541,
+                    12.3799,
+                    12.3587,
+                    12.3292,
+                    12.3423
+                ]
+            },
+            {
+                "schemeName": "360 ONE Balanced Hybrid Fund - Regular Plan - Growth",
+                "navData": [
+                    12.1621,
+                    12.1572,
+                    12.1244,
+                    12.1531,
+                    12.0861,
+                    12.2051,
+                    12.2317,
+                    12.2113,
+                    12.1836,
+                    12.1971
+                ]
+            },
+            {
+                "schemeName": "360 ONE Balanced Hybrid Fund- Direct Plan - Growth",
+                "navData": [
+                    12.3142,
+                    12.3087,
+                    12.275,
+                    12.3036,
+                    12.2341,
+                    12.3541,
+                    12.3799,
+                    12.3587,
+                    12.3292,
+                    12.3423
+                ]
+            },
+            {
+                "schemeName": "WhiteOak Capital Balanced Hybrid Fund Direct Plan Growth",
+                "navData": [
+                    12.178,
+                    12.183,
+                    12.157,
+                    12.178,
+                    12.155,
+                    12.257,
+                    12.239,
+                    12.25,
+                    12.214,
+                    12.19
+                ]
+            },
+            {
+                "schemeName": "WhiteOak Capital Balanced Hybrid Fund Regular Plan Growth",
+                "navData": [
+                    12.044,
+                    12.05,
+                    12.024,
+                    12.046,
+                    12.025,
+                    12.126,
+                    12.109,
+                    12.12,
+                    12.086,
+                    12.063
+                ]
+            }
+        ],
+        "Dynamic Bond Fund": [
+            {
+                "schemeName": "360 ONE Dynamic Bond Fund - Regular Plan - Growth Option",
+                "navData": [
+                    20.7246,
+                    20.6978,
+                    20.7009,
+                    20.6798,
+                    20.6703,
+                    20.6622,
+                    20.6458,
+                    20.6258,
+                    20.6147,
+                    20.6084
+                ]
+            },
+            {
+                "schemeName": "360 ONE Dynamic Bond Fund Direct Plan Growth",
+                "navData": [
+                    21.8135,
+                    21.7852,
+                    21.7883,
+                    21.7659,
+                    21.7555,
+                    21.7468,
+                    21.7292,
+                    21.708,
+                    21.6959,
+                    21.6891
+                ]
+            },
+            {
+                "schemeName": "360 ONE Dynamic Bond Fund Direct Plan Monthly Dividend",
+                "navData": [
+                    13.2947,
+                    13.2774,
+                    13.2793,
+                    13.2657,
+                    13.2593,
+                    13.254,
+                    13.2433,
+                    13.2304,
+                    13.223,
+                    13.2188
+                ]
+            },
+            {
+                "schemeName": "360 ONE Dynamic Bond Fund Direct Plan Quarterly Dividend",
+                "navData": [
+                    20.1315,
+                    20.1053,
+                    20.1082,
+                    20.0876,
+                    20.078,
+                    20.0699,
+                    20.0537,
+                    20.0342,
+                    20.023,
+                    20.0167
+                ]
+            },
+            {
+                "schemeName": "360 ONE Dynamic Bond Fund Regular Plan Bonus",
+                "navData": [
+                    20.7245,
+                    20.6977,
+                    20.7008,
+                    20.6797,
+                    20.6702,
+                    20.6621,
+                    20.6457,
+                    20.6257,
+                    20.6146,
+                    20.6083
+                ]
+            }
+        ],
+        "Dividend Yield Fund": [
+            {
+                "schemeName": "Aditya Birla Sun Life Dividend Yield Fund - Growth - Direct Plan",
+                "navData": [
+                    506.47,
+                    502.65,
+                    502.45,
+                    498.6,
+                    506.4,
+                    507.43,
+                    506.86,
+                    502.13,
+                    499.25,
+                    496.52
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Dividend Yield Fund - Growth - Regular Plan",
+                "navData": [
+                    464.83,
+                    461.34,
+                    461.16,
+                    457.65,
+                    464.82,
+                    465.79,
+                    465.28,
+                    460.97,
+                    458.34,
+                    455.84
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Dividend Yield Fund -DIRECT - IDCW",
+                "navData": [
+                    53.33,
+                    52.92,
+                    52.9,
+                    52.5,
+                    53.32,
+                    53.43,
+                    53.37,
+                    52.87,
+                    52.57,
+                    52.28
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Dividend Yield Fund -REGULAR - IDCW",
+                "navData": [
+                    29.63,
+                    29.41,
+                    29.4,
+                    29.17,
+                    29.63,
+                    29.69,
+                    29.66,
+                    29.38,
+                    29.22,
+                    29.06
+                ]
+            },
+            {
+                "schemeName": "HDFC Dividend Yield Fund - Growth Option Direct Plan",
+                "navData": [
+                    26.82,
+                    26.799,
+                    26.656,
+                    26.771,
+                    26.664,
+                    27.098,
+                    27.108,
+                    27.077,
+                    26.965,
+                    26.852
+                ]
+            }
+        ],
+        "Floater Fund": [
+            {
+                "schemeName": "Axis Floater Fund - Direct Plan - Annual IDCW",
+                "navData": [
+                    1190.708,
+                    1189.5991,
+                    1188.8119,
+                    1188.8566,
+                    1187.6862,
+                    1187.0905,
+                    1186.6157,
+                    1185.1563,
+                    1184.0582,
+                    1184.116
+                ]
+            },
+            {
+                "schemeName": "Axis Floater Fund - Direct Plan - Daily IDCW",
+                "navData": [
+                    1011.361,
+                    1010.6653,
+                    1010.2878,
+                    1012.6061,
+                    1012.1749,
+                    1011.9514,
+                    1011.9097,
+                    1010.8128,
+                    1010.5026,
+                    1010.9228
+                ]
+            },
+            {
+                "schemeName": "Axis Floater Fund - Direct Plan - Growth",
+                "navData": [
+                    1211.9705,
+                    1210.8396,
+                    1210.0358,
+                    1210.0791,
+                    1208.8845,
+                    1208.2775,
+                    1207.7921,
+                    1206.3058,
+                    1205.1854,
+                    1205.2435
+                ]
+            },
+            {
+                "schemeName": "Axis Floater Fund - Direct Plan - Monthly IDCW",
+                "navData": [
+                    1011.7046,
+                    1018.5576,
+                    1017.8824,
+                    1017.9195,
+                    1016.9173,
+                    1016.4077,
+                    1016.0011,
+                    1014.7517,
+                    1013.8122,
+                    1013.862
+                ]
+            },
+            {
+                "schemeName": "Axis Floater Fund - Direct Plan - Quarterly IDCW",
+                "navData": [
+                    1165.6356,
+                    1164.549,
+                    1163.7771,
+                    1163.8198,
+                    1162.6742,
+                    1162.0916,
+                    1161.6269,
+                    1160.1986,
+                    1159.1244,
+                    1159.1813
+                ]
+            }
+        ],
+        "Corporate Bond Fund": [
+            {
+                "schemeName": "Aditya Birla Sun Life Corporate Bond Fund - Growth - Direct Plan",
+                "navData": [
+                    105.9417,
+                    105.8506,
+                    105.8164,
+                    105.8049,
+                    105.7557,
+                    105.7275,
+                    105.6653,
+                    105.5945,
+                    105.5102,
+                    105.4977
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Corporate Bond Fund - Growth - Regular Plan",
+                "navData": [
+                    104.3484,
+                    104.2592,
+                    104.226,
+                    104.2152,
+                    104.1683,
+                    104.1411,
+                    104.0808,
+                    104.0116,
+                    103.9301,
+                    103.9183
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Corporate Bond Fund -DIRECT - IDCW",
+                "navData": [
+                    10.4385,
+                    10.4295,
+                    10.4262,
+                    10.425,
+                    10.4202,
+                    10.4174,
+                    10.4113,
+                    10.4043,
+                    10.396,
+                    10.3948
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Corporate Bond Fund -DIRECT - MONTHLY IDCW",
+                "navData": [
+                    12.5795,
+                    12.5687,
+                    12.5646,
+                    12.5632,
+                    12.5574,
+                    12.5541,
+                    12.5467,
+                    12.5984,
+                    12.5884,
+                    12.5869
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Corporate Bond Fund -REGULAR - IDCW",
+                "navData": [
+                    11.7458,
+                    11.7357,
+                    11.732,
+                    11.7308,
+                    11.7255,
+                    11.7224,
+                    11.7156,
+                    11.7079,
+                    11.6987,
+                    11.6974
+                ]
+            }
+        ],
+        "Credit Risk Fund": [
+            {
+                "schemeName": "Aditya Birla Sun Life Credit Risk Fund - Direct - IDCW",
+                "navData": [
+                    12.4979,
+                    12.4883,
+                    12.4862,
+                    12.4798,
+                    12.473,
+                    12.4699,
+                    12.4635,
+                    12.4574,
+                    12.4497,
+                    12.4459
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Credit Risk Fund - Direct Plan - Bonus",
+                "navData": [
+                    20.9858,
+                    20.9695,
+                    20.966,
+                    20.9554,
+                    20.9439,
+                    20.9387,
+                    20.928,
+                    20.9178,
+                    20.9049,
+                    20.8984
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Credit Risk Fund - Direct Plan - Growth",
+                "navData": [
+                    20.9868,
+                    20.9705,
+                    20.967,
+                    20.9563,
+                    20.9449,
+                    20.9397,
+                    20.929,
+                    20.9187,
+                    20.9058,
+                    20.8993
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Credit Risk Fund - Regular - IDCW",
+                "navData": [
+                    11.4836,
+                    11.475,
+                    11.4734,
+                    11.4678,
+                    11.4624,
+                    11.4598,
+                    11.4545,
+                    11.4491,
+                    11.4429,
+                    11.4396
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life Credit Risk Fund - Regular Plan - Bonus",
+                "navData": [
+                    17.7004,
+                    17.706,
+                    17.6856,
+                    17.6832,
+                    17.6803,
+                    17.6758,
+                    17.6691,
+                    17.6598,
+                    17.6516,
+                    17.6502
+                ]
+            }
+        ],
+        "ELSS": [
+            {
+                "schemeName": "360 ONE ELSS Tax Saver Nifty 50 Index Fund - Direct Plan - Growth",
+                "navData": [
+                    13.5977,
+                    13.6019,
+                    13.6383,
+                    13.653,
+                    13.6652,
+                    13.8127,
+                    13.7091,
+                    13.6935,
+                    13.647,
+                    13.5431
+                ]
+            },
+            {
+                "schemeName": "360 ONE ELSS Tax Saver Nifty 50 Index Fund - Direct Plan - IDCW Payout",
+                "navData": [
+                    13.5977,
+                    13.6019,
+                    13.6383,
+                    13.653,
+                    13.6652,
+                    13.8127,
+                    13.7091,
+                    13.6935,
+                    13.647,
+                    13.5431
+                ]
+            },
+            {
+                "schemeName": "360 ONE ELSS Tax Saver Nifty 50 Index Fund - Regular Plan - Growth",
+                "navData": [
+                    13.5442,
+                    13.5485,
+                    13.5849,
+                    13.5996,
+                    13.612,
+                    13.7591,
+                    13.656,
+                    13.6406,
+                    13.5946,
+                    13.4911
+                ]
+            },
+            {
+                "schemeName": "360 ONE ELSS Tax Saver Nifty 50 Index Fund - Regular Plan - IDCW Payout",
+                "navData": [
+                    13.5442,
+                    13.5485,
+                    13.5849,
+                    13.5996,
+                    13.612,
+                    13.7591,
+                    13.656,
+                    13.6406,
+                    13.5946,
+                    13.4911
+                ]
+            },
+            {
+                "schemeName": "Aditya Birla Sun Life ELSS Tax Saver Fund - Growth - Direct Plan",
+                "navData": [
+                    65.43,
+                    65.38,
+                    65.24,
+                    65.32,
+                    65.07,
+                    66.1,
+                    65.75,
+                    65.67,
+                    65.35,
+                    65.09
+                ]
+            }
+        ],
+        "Tax Savings Fund": [
+            {
+                "schemeName": "Groww ELSS Tax Saver Fund (formerly known as Indiabulls Tax Savings Fund)- Direct Plan- Dividend Option",
+                "navData": [
+                    22.31,
+                    22.38,
+                    22.35,
+                    22.49,
+                    22.34,
+                    22.75,
+                    22.71,
+                    22.75,
+                    22.67,
+                    22.51
+                ]
+            },
+            {
+                "schemeName": "Groww ELSS Tax Saver Fund (formerly known as Indiabulls Tax Savings Fund)- Direct Plan- Growth Option",
+                "navData": [
+                    22.34,
+                    22.41,
+                    22.38,
+                    22.52,
+                    22.37,
+                    22.78,
+                    22.74,
+                    22.78,
+                    22.7,
+                    22.54
+                ]
+            },
+            {
+                "schemeName": "Groww ELSS Tax Saver Fund (formerly known as Indiabulls Tax Savings Fund)- Regular Plan- - Income Distribution cum capital withdrawal Option (Payout)",
+                "navData": [
+                    20.02,
+                    20.09,
+                    20.06,
+                    20.18,
+                    20.05,
+                    20.42,
+                    20.38,
+                    20.42,
+                    20.35,
+                    20.21
+                ]
+            },
+            {
+                "schemeName": "Groww ELSS Tax Saver Fund (formerly known as Indiabulls Tax Savings Fund)-Regular Plan-Growth Option",
+                "navData": [
+                    20.02,
+                    20.08,
+                    20.05,
+                    20.18,
+                    20.05,
+                    20.42,
+                    20.38,
+                    20.42,
+                    20.35,
+                    20.21
+                ]
+            }
+        ]
+    }
+}
+function fetchSchemesForFund(fund) {
+            const schemes=dat['schemes'][fund];
+            if (schemes && schemes.length > 0) {
+                const schemesContainer = document.getElementById('schemesContainer');
+                
+                const header = document.createElement('h4');
+                header.textContent = `Schemes under ${fund}:`;
+                schemesContainer.appendChild(header);
+
+                schemes.forEach((scheme, index) => {
+                    const schemeDiv = document.createElement('div');
+                    schemeDiv.className = 'scheme-card';
+                    schemeDiv.innerHTML = `<strong>${scheme.schemeName}</strong>`;
+                    const canvas = document.createElement('canvas');
+                    canvas.className = 'schemeChart';
+                    canvas.id = `schemeChart-${fund}-${index}`; // Assign a unique ID for debugging
+                    schemeDiv.appendChild(canvas);
+
+                    schemesContainer.appendChild(schemeDiv);
+
+                    // Log the schemeDiv and canvas for debugging
+        
+                    // Plot NAV graph for this scheme
+                    plotSchemeChart(canvas, scheme.navData);
+                });
+            }
+        }
+function plotSchemeChart(canvas, navData) {
+    const ctx = canvas.getContext('2d');
+    const reversedNavData = navData.slice().reverse();
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: reversedNavData.map((_, index) => `Day ${index + 1}`),
+            datasets: [{
+                label: 'NAV',
+                data: reversedNavData,
+                borderColor: '#FF6384',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                fill: true
+            }]
+        }
+        ,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return `NAV: ${tooltipItem.raw}`;
+                        }
+                    }
+                }
+            }
+        }
+    });   
+}
+    </script> 
+
+
+
+</body>
+</html>

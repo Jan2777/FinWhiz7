@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Planning</title>
+    <link href='https://fonts.googleapis.com/css?family=Bubblegum+Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to bottom right, #f5f5f5, #e0e0e0);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            width: 100%;
+            max-width: 800px;
+        }
+        .tab {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        .tab-content {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+        h1 {
+            font-family: 'Bubblegum Sans';
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #007bff;
+            animation: slideDown 1s ease-in-out;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input, select, button {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 400px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .checkbox-group label {
+            margin: 10px;
+            font-size: 1em;
+        }
+        .goal-details {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+            animation: grow 0.5s ease-in-out;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .result-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        .result-box h2 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .goal-image {
+            margin: 10px;
+            cursor: pointer;
+            height:40px;
+            width:40px;
+            transition: transform 0.3s;
+        }
+        .goal-image:hover {
+            transform: scale(1.1);
+        }
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes grow {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .tabs {
+            display: flex;
+            background-color: #2E363A;
+            font-family: "Lato", sans-serif;
+            height:130px;
+        }
+
+        .tab-button {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #2E363A;
+            position: relative;
+            margin-top:-20px;
+            border: none;
+            outline: none;
+            color:#E5E5E5;
+            text-decoration: none;
+
+        }
+
+        .tab-button:hover,
+        .tab-button.active {
+            color: #2ca5eb;
+        }
+
+
+        .tab-button.active::after,
+        .tab-button:hover::after {
+            transform: scaleX(1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .lab {
+            display: inline;
+            padding-top: 10px;
+            margin-left: 20px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            column-gap: 5px;
+            margin-left: auto;
+            margin-right: 15px;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .homepg {
+            display: flex;
+            margin-top: 30px;
+            column-gap: 80px;
+            height: 100%;
+        }
+
+        .slogan {
+            margin-left: 170px;
+            padding-top: 100px;
+        }
+
+        .mantra {
+            font-family: "Times New Roman", serif;
+            font-weight: 700;
+            font-size: 45px;
+        }
+
+        body {
+            margin: 0;
+        
+        }
+
+        
+
+    
+        .sub{
+            display:flex;
+            flex-direction: column;
+            float: right;
+            
+            margin-left:600px;
+            row-gap: 40px;
+        }
+        .cont,.cont1{
+            display:inline;
+            color:#AAAAAA;
+            font-size: 13px;
+        
+        }
+        .cont{
+            margin-left: 120px;
+        }
+        .cont1{
+            margin-left: 50px;
+        }
+        .conta{
+            margin-top: 17px;
+        }
+        .logo{
+            vertical-align: middle;
+        }
+        span{
+            vertical-align: middle;
+            font-family: "Kanit", sans-serif;
+            font-weight: bold;
+            
+        }
+        .comp{
+            display: flex;
+            padding-left: 50px;
+            padding-top: 40px;
+            color:#E5E5E5;
+            font-size:35px;
+        }
+        .slider-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    
+    
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    display: flex;
+    z-index: 100;
+}
+
+
+.textcont{
+    margin-left:-1200px;
+    margin-top:240px;
+    width:517.9px;
+}
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const goals = [
+                {value: 'car', label: 'Car', imgSrc: 'car.png'},
+                {value: 'kids', label: 'Kids', imgSrc: 'kids.svg'},
+                {value: 'home', label: 'Home', imgSrc: 'home.svg'},
+                {value: 'villa', label: 'Villa', imgSrc: 'villa.svg'},
+                {value: 'education', label: 'Education', imgSrc: 'education.png'},
+                {value: 'medical', label: 'Medical', imgSrc: 'emergency.svg'},
+                {value: 'business', label: 'Business', imgSrc: 'business.svg'}
+            ];
+
+            const form = document.querySelector('form');
+            const checkboxGroup = document.querySelector('.checkbox-group');
+            let selectedGoals = [];
+
+            // Create goal images
+            goals.forEach(goal => {
+                const img = document.createElement('img');
+                img.src = goal.imgSrc;
+                img.alt = goal.label;
+                img.classList.add('goal-image');
+                img.dataset.value = goal.value;
+                checkboxGroup.appendChild(img);
+
+                img.addEventListener('click', function() {
+                    if (selectedGoals.includes(goal.value)) {
+                        selectedGoals = selectedGoals.filter(g => g !== goal.value);
+                        img.style.border = 'none';
+                    } else {
+                        selectedGoals.push(goal.value);
+                        img.style.border = '2px solid #007bff';
+                    }
+                });
+            });
+
+            // Handle form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const presentAge = parseInt(document.getElementById('id_age').value);
+                const salary = parseFloat(document.getElementById('id_salary').value);
+
+                let resultsHtml = '<div class="result-box"><h2>Calculation Results:</h2>';
+
+                selectedGoals.forEach(goalValue => {
+                    const goal = goals.find(g => g.value === goalValue);
+                    const expectedAge = parseInt(prompt(`Enter expected age for ${goal.label}:`));
+                    const expectedMoney = parseFloat(prompt(`Enter expected amount to save for ${goal.label}:`));
+
+                    const yearsLeft = expectedAge - presentAge;
+                    const annualSavingsRequired = expectedMoney / yearsLeft;
+                    const savingsPercentage = (annualSavingsRequired / salary) * 100;
+
+                    resultsHtml += `
+                        <h3>Goal: ${goal.label}</h3>
+                        <p>Years Left: ${yearsLeft}</p>
+                        <p>Annual Savings Required: ${annualSavingsRequired.toFixed(2)}</p>
+                        <p>Percentage of Salary to Save: ${savingsPercentage.toFixed(2)}%</p>
+                    `;
+                });
+
+                resultsHtml += '</div>';
+                document.body.insertAdjacentHTML('beforeend', resultsHtml);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="tabs" id="navbar">
+        <div class="comp">
+            <a href="index.html"><img class="logo" src="log.png" height="50px" ></a>
+            <span>FinWhiz</span>
+        </div>
+        <div class="sub">
+            <div class="conta">
+        <div class="cont">finwhiz2024@gmail.com</div>
+        <div class="cont1">044-2227489</div></div>
+        <div class="menu">
+            <a class="tab-button" href="index.html">Home</a>
+            <a class="tab-button" href="checkup.html">Financial Checkup</a>
+            <a class="tab-button" href="planning.html">Planning</a>
+            <a class="tab-button" href="investment.html">Investment</a>
+        </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="tab-content">
+            Financial Planning
+        </div>
+        <h1>Financial Planning</h1>
+        <form>
+            <div class="form-group">
+                <label for="id_age">Age:</label>
+                <input type="number" id="id_age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="id_salary">Salary:</label>
+                <input type="number" id="id_salary" name="salary" required>
+            </div>
+            <h2>Goals:</h2>
+            <div class="checkbox-group">
+                <!-- Images will be appended here dynamically -->
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

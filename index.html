@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinWhiz</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="{% static 'scripts.js' %}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        .tabs {
+            display: flex;
+            background-color: #2E363A;
+            font-family: "Lato", sans-serif;
+            height:130px;
+        }
+
+        .tab-button {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #2E363A;
+            position: relative;
+            padding-bottom: 25px;
+        
+            border: none;
+            outline: none;
+            color:#E5E5E5;
+            text-decoration: none;
+
+        }
+
+        .tab-button:hover,
+        .tab-button.active {
+            color: #2ca5eb;
+        }
+
+
+        .tab-button.active::after,
+        .tab-button:hover::after {
+            transform: scaleX(1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .lab {
+            display: inline;
+            padding-top: 10px;
+            margin-left: 20px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            column-gap: 5px;
+            margin-left: auto;
+            margin-right: 15px;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .homepg {
+            display: flex;
+            margin-top: 30px;
+            column-gap: 80px;
+            height: 100%;
+        }
+
+        .slogan {
+            margin-left: 170px;
+            padding-top: 100px;
+        }
+
+        .mantra {
+            font-family: "Times New Roman", serif;
+            font-weight: 700;
+            font-size: 45px;
+        }
+
+        body {
+            margin: 0;
+        
+        }
+
+        
+
+    
+        .sub{
+            display:flex;
+            flex-direction: column;
+            float: right;
+            
+            margin-left:500px;
+            row-gap: 40px;
+        }
+        .cont,.cont1{
+            display:inline;
+            color:#AAAAAA;
+            font-size: 13px;
+        
+        }
+        .cont{
+            margin-left: 120px;
+        }
+        .cont1{
+            margin-left: 50px;
+        }
+        .conta{
+            margin-top: 17px;
+        }
+        .logo{
+            vertical-align: middle;
+        }
+        span{
+            vertical-align: middle;
+            font-family: "Kanit", sans-serif;
+            font-weight: bold;
+            
+        }
+        .comp{
+            display: flex;
+            padding-left: 50px;
+            padding-top: 40px;
+            color:#E5E5E5;
+            font-size:35px;
+        }
+        .slider-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    
+    
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    display: flex;
+    z-index: 100;
+}
+
+
+.textcont{
+    margin-left:-1200px;
+    margin-top:240px;
+    width:517.9px;
+}
+.text1{
+
+    color:#666;
+    font-size: 27px;
+    font-family: 'Lato',sans-serif;
+    font-weight: bold;
+}
+/* To ensure the text is visible in the first slide */
+.text2{
+    color:#222;
+    font-size: 46px;
+    font-family: 'Lato',sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.slides{
+    height:750px;
+    max-width: 100%;
+    
+}
+.text3{
+    color:#555;
+    font-size: 22px;
+    font-family: 'Lato',sans-serif;
+    margin-top: 20px;
+    
+}
+.ft{
+    margin-top: 310px;
+    width:360px;
+    overflow:hidden;
+    position: relative;
+}
+.ft img{
+    height:169.91px;
+    width:360px;
+    transition: transform .2s;
+    object-fit: cover;
+}
+
+.ft img:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+h4{
+    font-size: 20px;
+    font-family: 'Lato',sans-serif;
+    color:#333333;
+    transition: color 0.2s;
+}
+h4:hover{
+    color:#337ab7
+}
+p{
+    font-size: 15px;
+    font-family: 'Lato',sans-serif;
+    color:#666
+}
+.ftshow{
+    display: flex;
+    column-gap: 60px;
+    margin-left: 120px;
+}
+    </style>
+</head>
+<body>
+    <div class="tabs" id="navbar">
+        <div class="comp">
+            <a href="index.html"><img class="logo" src="log.png" height="50px">
+            </a><span>FinWhiz</span>
+        </div>
+        <div class="sub">
+            <div class="conta">
+        <div class="cont">finwhiz2024@gmail.com</div>
+        <div class="cont1">044-2227489</div></div>
+        <div class="menu">
+            <a class="tab-button" href="index.html">Home</a>
+            <a class="tab-button" href="checkup.html">Financial Checkup</a>
+            <a class="tab-button" href="planning.html">Planning</a>
+            <a class="tab-button" href="investment.html">Investment</a>
+        </div>
+        </div>
+    </div>
+
+    <div class="slider-container">
+        <div class="slide" id="slide1">
+            
+            <img class="slides" src="http://templates.thememodern.com/finance/images/Slider/11.jpg" alt="Image 1">
+            
+            <div class="textcont">
+            <div class="text1" id="text1">SAVING YOUR TIME</div>
+            <div class="text2">MONEY AND INVESTMENTS</div>
+            <div class="text3">Expertly managing your savings, investments, and finances to ensure a secure and prosperous future.</div>
+            </div>
+        </div>
+        <div class="slide" id="slide2">
+            <img class="slides" src="http://templates.thememodern.com/finance/images/Slider/2.jpg" alt="Image 2">
+            <div class="textcont">
+            <div class="text1" id="text2">HELPING YOU TO</div>
+            <div class="text2">GROW YOUR ASSET</div>
+            <div class="text3">Empowering your financial growth by building and enhancing your assets.</div>
+            </div>
+        </div>
+        <div class="slide" id="slide3">
+            <img class="slides" src="http://templates.thememodern.com/finance/images/Slider/10.jpg" alt="Image 3">
+            <div class="textcont">
+            <div class="text1" id="text3">GREAT EXPERIENCE</div>
+            <div class="text2">WITH OUR TEAM</div>
+            <div class="text3">Partnering with you for a seamless and enjoyable experience through our professional team.</div>
+            </div>
+        </div>
+    </div>
+    <div class="ftshow">
+    <div class="ft">
+        <div>
+            <img src="http://templates.thememodern.com/finance/images/Blog/1.jpg">
+            <h4>Assess your Financial Health</h4>
+        
+            <p>
+                FinWhiz provides a quick financial checkup to assess your financial health and offer actionable insights for a secure future.            </p>
+        </div>
+    </div>
+    <div class="ft">
+        <div>
+            <img src="http://templates.thememodern.com/finance/images/Blog/2.jpg">
+            <h4>Goal Planning</h4>
+        
+            <p>
+                FinWhiz provides a quick financial checkup to assess your financial health and offer actionable insights for a secure future.            </p>
+        </div>
+    </div>
+    <div class="ft">
+        <div>
+            <img src="http://templates.thememodern.com/finance/images/Blog/3.jpg">
+            <h4>Portfolio Allocation</h4>
+        
+            <p>
+                FinWhiz provides a quick financial checkup to assess your financial health and offer actionable insights for a secure future.            </p>
+        </div>
+    </div>
+    </div>
+</body>
+<script>
+const slides = document.querySelectorAll('.slide');
+const textElements = document.querySelectorAll('.text');
+let currentIndex = 0;
+const intervalTime = 5000; // Time each slide is visible (5 seconds)
+const transitionTime = 1000; // Transition time (1 second)
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        if (i === index) {
+            slide.style.opacity = '1';
+            slide.classList.add('active');
+        } else {
+            slide.style.opacity = '0';
+            slide.classList.remove('active');
+        }
+    });
+
+}
+
+function startSlider() {
+    showSlide(currentIndex);
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    }, intervalTime);
+}
+
+window.addEventListener('load', startSlider);
+
+
+</script>
+</html>

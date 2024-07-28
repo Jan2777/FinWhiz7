@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Checkup</title>
+    <style>
+        #mainContent {
+            margin-top: 10px; /* Adjust margin to avoid overlap with fixed header */
+            padding: 20px;
+        }
+
+        .containe {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh; /* Adjust height as needed */
+            margin-top: 20px;
+        }
+
+        .image-container {
+            margin-top:-80px;
+            margin-bottom:1%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .image-container img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 15px; /* Curved edges for the image */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-container {
+            flex: 1;
+            top:50%;
+            left: 4px;
+            padding: 30px;
+            margin-left: 20px;
+        }
+
+        .text-container h1 {
+            top:177%;
+            margin-top: -10px; ;
+            font-size: 4em; /* Larger font size for the first line */
+            
+        }
+
+        .text-container p {
+            top:78%;
+            left:60%;
+            
+            font-size: 1em; /* Smaller font size for subsequent lines */
+            margin-top: 10px;
+        }
+
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .mainc{
+            max-width:650px;
+            max-height: 270px;
+            margin-top: 75px;
+            display: inline-block;
+        }
+        .piec{
+            max-width: 140px;
+            max-height: 140px;
+        }
+        .piec1{
+            max-width: 120px;
+            height: 140px;
+            margin-right: 80px;
+            margin-top: 40px;
+        }
+        .piec2{
+            width:100px;
+            height: 150px;
+            margin-top: 40px;
+        }
+        .chartc{
+            background-color: white;
+            height:220px;
+            width: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+            margin-top: -150px;
+        }
+        h2{
+            margin-bottom: 0px;
+            display: inline-block;
+        }
+        .chartc1{
+            background-color: white;
+            height:220px;
+            width: 320px;
+            display: inline-block;
+            
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+        }
+        .container1 {
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            
+        }
+
+        form {
+            
+            display: flex;
+            flex-direction: column;
+            width:440px;
+            margin: auto;
+            padding-top: 30px;
+            margin-top: 50px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            margin-bottom: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-size: 13px;
+            display: block;
+            padding-left: 60px;
+            padding-bottom: 5px;
+            
+        }
+
+        input {
+            padding: 10px;
+            margin-left: 60px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 70%;
+            box-sizing: border-box;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+            width:120px;
+            margin-left: 150px;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #results {
+            width:500px;
+        }
+
+        #results p {
+            font-size: 15px;
+            margin: 10px 0;
+        }
+
+        .charts{
+            display: flex;
+            flex-direction: row;
+        }
+   
+        .over{
+            display: flex;
+            flex-direction: column;
+            margin-left: 70px;
+            row-gap: 30px;
+        }
+        .over1,.over2{
+            display: flex;
+            flex-direction: row;
+            column-gap: 40px;
+        }
+        #back-button {
+            display: none;
+            padding: 10px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        #back-button:hover {
+            background-color: #5a6268;
+        }
+        #results img,p{
+            display: inline-block;
+            
+        }
+        #results p{
+            font-size: 13px;
+        }
+        .cont11{
+            display: inline-flex;
+            flex-direction: column;
+            width:500px;
+            margin-left: 30px;
+            row-gap: 20px;
+        }
+        .cont2{
+            display: inline-flex;
+            column-gap: 22px;
+            margin-top: 40px;
+            
+        }
+        .cont3{
+            display: inline-flex;
+            column-gap:30px ;
+            
+        }
+        .chartc11{
+            background-color: white;
+            height:220px;
+            width: 320px;
+            display: inline-block;
+            
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+            margin-top: -150px;
+        }
+        .tabs {
+            display: flex;
+            background-color: #2E363A;
+            font-family: "Lato", sans-serif;
+            
+        }
+
+        .tab-button {
+            padding: 14px 20px;
+            cursor: pointer;
+            background-color: #2E363A;
+            position: relative;
+            
+        
+            border: none;
+            outline: none;
+            color:#E5E5E5;
+            text-decoration: none;
+
+        }
+
+        .tab-button:hover,
+        .tab-button.active {
+            color: #2ca5eb;
+        }
+
+
+        .tab-button.active::after,
+        .tab-button:hover::after {
+            transform: scaleX(1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .lab {
+            display: inline;
+            padding-top: 10px;
+            margin-left: 20px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            column-gap: 5px;
+            margin-left: auto;
+            margin-right: 15px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .homepg {
+            display: flex;
+            margin-top: 30px;
+            column-gap: 80px;
+            height: 100%;
+        }
+
+        .slogan {
+            margin-left: 170px;
+            padding-top: 100px;
+        }
+
+        .mantra {
+            font-family: "Times New Roman", serif;
+            font-weight: 700;
+            font-size: 45px;
+        }
+
+        body {
+            margin: 0;
+        
+        }
+
+        
+
+    
+        .sub{
+            display:flex;
+            flex-direction: column;
+            float: right;
+            
+            margin-left:500px;
+            row-gap: 40px;
+        }
+        .cont,.cont1{
+            display:inline;
+            color:#AAAAAA;
+            font-size: 13px;
+        
+        }
+        .cont{
+            margin-left: 120px;
+        }
+        .cont1{
+            margin-left: 50px;
+        }
+        .conta{
+            margin-top: 17px;
+        }
+        .logo{
+            vertical-align: middle;
+        }
+        span{
+            vertical-align: middle;
+            font-family: "Kanit", sans-serif;
+            font-weight: bold;
+            
+        }
+        .comp{
+            display: flex;
+            padding-left: 50px;
+            padding-top: 40px;
+            color:#E5E5E5;
+            font-size:35px;
+        }
+        .hm{
+            width:396px;
+            height: 396.66px;
+            margin-top: 90px;
+            margin-left: 80px;
+            box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="tabs" id="navbar">
+        <div class="comp">
+            <a href="index.html"><img class="logo" src="log.png" height="50px" ></a>
+            <span>FinWhiz</span>
+        </div>
+        <div class="sub">
+            <div class="conta">
+        <div class="cont">finwhiz2024@gmail.com</div>
+        <div class="cont1">044-2227489</div></div>
+        <div class="menu">
+            <a class="tab-button" href="index.html">Home</a>
+            <a class="tab-button" href="checkup.html">Financial Checkup</a>
+            <a class="tab-button" href="planning.html">Planning</a>
+            <a class="tab-button" href="investment.html">Investment</a>
+        </div>
+        </div>
+    </div>
+    <div id="header">
+        <h1>Financial Checkup</h1>
+    </div>
+    <div id="mainContent">
+        <div class="containe" id="container">
+            <div class="image-container">
+                <img src="IMG_20240728_092146.jpg" alt="Investment Image" id="im">
+            </div>
+            <div class="text-container" id="tx">
+                <h1 size>See if your Money is in a Good Shape</h1>
+                <p>Optimization of your portfolio for better results</p>
+                <p>Financial Ratios along wiht recommendations on where to imrpove for betterment</p>
+                <p>Pictorial/Graphical representation on where you stand on an average benchmark</p>
+            </div>
+        </div>
+        
+        <form id="financial-form">
+            <div class="form-group">
+                <label for="income">Monthly Income:</label>
+                <input type="number" id="income" name="income" value="50000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="expenses">Monthly Expenses:</label>
+                <input type="number" id="expenses" name="expenses" value="30000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="debt">Total Debt:</label>
+                <input type="number" id="debt" name="debt" value="200000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="assets">Total Assets:</label>
+                <input type="number" id="assets" name="assets" value="800000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="emergencyFund">Emergency Fund:</label>
+                <input type="number" id="emergencyFund" name="emergencyFund" value="100000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="investments">Total Investments:</label>
+                <input type="number" id="investments" name="investments" value="150000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="insurance">Monthly Insurance Premiums:</label>
+                <input type="number" id="insurance" name="insurance" value="5000" required>
+            </div>
+
+            <button type="button" onclick="calculateStats()">Calculate</button>
+        </form>
+
+        <div id="results">
+            <h2>Financial Dashboard</h2>
+            <br>
+            <div class="cont11">
+                <div class="cont2">
+            <img src="3563905-removebg-preview.png" height="40px" width="40px">
+            <p id="debtIncomeRatio"></p>
+            <img src="3347971.png" height="40px" width="40px">
+            <p id="savingsRate"></p>
+                </div>
+                <br>
+                <div class="cont3">
+            <img src="asset-valuables-wealth-16-512.png" height="40px"width='40px'>
+            <p id="netWorth"></p>
+            <p id="incomeExpenseRatio"></p>
+       
+            <img src="910730.png" width="40px" height="40px">
+            <p id="insuranceExpenseRatio"></p>
+            </div>
+            </div>
+        </div>
+
+        <div class="charts" id="ch">
+            
+            <canvas class="mainc" id="debtIncomeChart"></canvas>
+            <div class="over">
+            <div class="over1">
+            <div class="chartc">
+            <canvas class="piec"id="savingsRateChart"></canvas>
+            </div>
+            <div class="chartc1" style="display: none;">
+            <canvas id="emergencyFundChart" class="piec1" ></canvas></div>
+            
+            
+            <div class="chartc11">
+            <canvas id="netWorthChart" class="piec2"></canvas></div></div>
+            <div class="over2">
+            <div class="chartc1">
+            <canvas id="incomeExpenseChart" class="piec2"></canvas></div>
+            <canvas id="debtAssetChart" style="display: none;"></canvas>
+            <div class="chartc1">
+            <canvas id="investmentRateChart" class="piec2"></canvas></div>
+            <canvas id="insuranceExpenseChart"style="display: none;"></canvas>
+            </div>
+            </div>
+        </div>
+        <div>
+            
+        </div>
+        <button id="back-button" onclick="showForm()">Back</button>
+    </div>
+    <script>
+        document.getElementById('ch').style.display = 'none';
+        document.getElementById('results').style.display = 'none';
+        let charts = {};
+
+        function generateRandomData(numPoints, debtAvg, debtStdDev, ratioAvg, ratioStdDev) {
+            const data = [];
+            for (let i = 0; i < numPoints; i++) {
+                const debt = debtAvg + (Math.random() - 0.5) * debtStdDev * 2;
+                const ratio = ratioAvg + (Math.random() - 0.5) * ratioStdDev * 2;
+                data.push({ x: Math.max(debt, 0), y: Math.max(Math.min(ratio, 100), 0) });
+            }
+            return data;
+        }
+
+        function createScatterChart(chartId, label, userDebt, userRatio) {
+            const averageDebt = 100000; // Average debt in INR
+            const debtStdDev = 50000; // Standard deviation for debt
+            const ratioAvg = 40; // Average debt-to-income ratio in %
+            const ratioStdDev = 20; // Standard deviation for ratio
+
+            // Generate benchmark data
+            const benchmarkData = generateRandomData(100, averageDebt, debtStdDev, ratioAvg, ratioStdDev);
+
+            const ctx = document.getElementById(chartId).getContext('2d');
+            return new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [
+                        {
+                            label: 'Average Indian Household Debts',
+                            data: benchmarkData,
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1,
+                            pointRadius: 5
+                        },
+                        {
+                            label: 'Your Debt',
+                            data: [{ x: userDebt, y: userRatio }],
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1,
+                            pointRadius: 7
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Total Debt (INR)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Debt-to-Income Ratio (%)'
+                            },
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        function createPieChart(chartId, label, value, benchmark) {
+            const ctx = document.getElementById(chartId).getContext('2d');
+            return new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: [label, 'Benchmark'],
+                    datasets: [{
+                        data: [value, benchmark],
+                        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+        }
+
+        function createBarChart(chartId, label, value, benchmark) {
+            const ctx = document.getElementById(chartId).getContext('2d');
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [label, 'Benchmark'],
+                    datasets: [{
+                        label: label,
+                        data: [value, benchmark],
+                        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function calculateStats() {
+            const income = parseFloat(document.getElementById('income').value);
+            const expenses = parseFloat(document.getElementById('expenses').value);
+            const debt = parseFloat(document.getElementById('debt').value);
+            const assets = parseFloat(document.getElementById('assets').value);
+            const emergencyFund = parseFloat(document.getElementById('emergencyFund').value);
+            const investments = parseFloat(document.getElementById('investments').value);
+            const insurance = parseFloat(document.getElementById('insurance').value);
+
+            const debtIncomeRatio = (debt / income) * 100;
+            const savingsRate = ((income - expenses) / income) * 100;
+            const emergencyFundCoverage = (emergencyFund / expenses) * 100;
+            const netWorth = assets - debt;
+            const incomeExpenseRatio = (expenses / income) * 100;
+            const debtAssetRatio = (debt / assets) * 100;
+            const investmentRate = (investments / income) * 100;
+            const insuranceExpenseRatio = (insurance / expenses) * 100;
+
+             document.getElementById('debtIncomeRatio').innerText = `Debt-to-Income Ratio: ${debtIncomeRatio.toFixed(2)}%`;
+            document.getElementById('savingsRate').innerText = `Savings Rate: ${savingsRate.toFixed(2)}%`;
+            // document.getElementById('emergencyFundCoverage').innerText = `Emergency Fund Coverage: ${emergencyFundCoverage.toFixed(2)}%`;
+            document.getElementById('netWorth').innerText = `Net Worth: ₹${netWorth.toFixed(2)}`;
+            // document.getElementById('incomeExpenseRatio').innerText = `Income to Expense Ratio: ${incomeExpenseRatio.toFixed(2)}%`;
+            // document.getElementById('debtAssetRatio').innerText = `Debt-to-Asset Ratio: ${debtAssetRatio.toFixed(2)}%`;
+            // document.getElementById('investmentRate').innerText = `Investment Rate: ${investmentRate.toFixed(2)}%`;
+            document.getElementById('insuranceExpenseRatio').innerText = `Insurance Expense Ratio: ${insuranceExpenseRatio.toFixed(2)}%`;
+
+            const benchmarks = {
+        debtIncomeRatio: 36,
+        savingsRate: 20,
+        emergencyFundCoverage: 6,
+        netWorth: 0,
+        incomeExpenseRatio: 1,
+        debtAssetRatio: 0.5,
+        investmentRate: 20,
+        insuranceExpenseRatio: 10
+    };
+
+    const recommendations = {
+        debtIncomeRatio: debtIncomeRatio < benchmarks.debtIncomeRatio ? 'Good' : 'Needs Improvement',
+        savingsRate: savingsRate >= benchmarks.savingsRate ? 'Good' : 'Increase Savings',
+        emergencyFundCoverage: emergencyFundCoverage >= benchmarks.emergencyFundCoverage ? 'Adequate' : 'Increase Emergency Fund',
+        netWorth: netWorth >= benchmarks.netWorth ? 'Positive' : 'Increase Assets or Decrease Debt',
+        incomeExpenseRatio: incomeExpenseRatio > benchmarks.incomeExpenseRatio ? 'Healthy' : 'Reduce Expenses or Increase Income',
+        debtAssetRatio: debtAssetRatio <= benchmarks.debtAssetRatio ? 'Healthy' : 'Reduce Debt',
+        investmentRate: investmentRate >= benchmarks.investmentRate ? 'Good' : 'Increase Investments',
+        insuranceExpenseRatio: insuranceExpenseRatio <= benchmarks.insuranceExpenseRatio ? 'Manageable' : 'Review Insurance Expenses'
+    };
+
+    // document.getElementById('recom1').innerHTML =  `(${recommendations.debtIncomeRatio})`;
+    // document.getElementById('recom2').textContent += ` (${recommendations.savingsRate})`;
+    // document.getElementById('recom3').textContent +=  `(${recommendations.emergencyFundCoverage})`;
+    // document.getElementById('recom4').textContent +=  `(${recommendations.netWorth})`;
+    // document.getElementById('recom5').textContent +=  `(${recommendations.incomeExpenseRatio})`;
+    // document.getElementById('recom6').textContent += ` (${recommendations.debtAssetRatio})`;
+    // document.getElementById('recom7').textContent += ` (${recommendations.investmentRate})`;
+    // document.getElementById('recom8').textContent +=  `(${recommendations.insuranceExpenseRatio})`;
+
+            document.getElementById('financial-form').style.display = 'none';
+            document.getElementById('container').style.display = 'none';
+            
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('ch').style.display = 'flex';
+            document.getElementById('back-button').style.display = 'block';
+            charts.debtIncomeChart = createScatterChart('debtIncomeChart', 'Debt-to-Income Ratio', debt, debtIncomeRatio);
+            charts.savingsRateChart = createPieChart('savingsRateChart', 'Savings Rate', savingsRate, 20);
+            charts.emergencyFundChart = createBarChart('emergencyFundChart', 'Emergency Fund Coverage', emergencyFundCoverage, 100);
+            charts.netWorthChart = createBarChart('netWorthChart', 'Net Worth', netWorth, 500000);
+            charts.incomeExpenseChart = createBarChart('incomeExpenseChart', 'Income-to-Expense Ratio', incomeExpenseRatio, 30);
+            charts.debtAssetChart = createPieChart('debtAssetChart', 'Debt-to-Asset Ratio', debtAssetRatio, 30);
+            charts.investmentRateChart = createBarChart('investmentRateChart', 'Investment Rate', investmentRate, 10);
+            charts.insuranceExpenseChart = createPieChart('insuranceExpenseChart', 'Insurance Expense Ratio', insuranceExpenseRatio, 10);
+          
+        }
+
+        function showForm() {
+            document.getElementById('financial-form').style.display = 'block';
+            document.getElementById('container').style.display = 'block';
+          
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('ch').style.display = 'none';
+            document.getElementById('back-button').style.display = 'none';
+        
+            for (let key in charts) {
+                if (charts[key]) {
+                    charts[key].destroy();
+                }
+            }
+
+        }
+
+        // Automatically calculate stats with default values on page load
+        
+    </script>
+</body>
+</html>
